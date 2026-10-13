@@ -99,5 +99,15 @@ Thông qua dự án này, tôi có cơ hội thực hành:
 **GitHub:** [nqviet0905](https://github.com/nqviet0905)
 
 
+## 8. Hình ảnh giao diện
+
+### Giao diện đăng nhập
+![Giao diện đăng nhập](screenshots/login.png)
+
+### Giao diện chính
+![Giao diện chính](screenshots/main-screen.png)
+
+
+
 
 *Dự án phục vụ mục đích học tập và thực hành lập trình phần mềm.*
