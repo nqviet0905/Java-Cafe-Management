@@ -1,0 +1,4 @@
+
+db.url=jdbc:mysql://localhost:3306/javacafe?useSSL=false&serverTimezone=UTC
+db.user=cafe_app
+db.password=CHANGE_ME

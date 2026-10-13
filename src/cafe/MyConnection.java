@@ -8,6 +8,12 @@ import java.sql.Timestamp;
 import javax.swing.table.DefaultTableModel;
 import java.math.BigDecimal;
 import javax.swing.JComboBox;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Properties;
 
 
 public class MyConnection {
@@ -20,14 +26,32 @@ public class MyConnection {
     private String url;
     private Connection conn;
 
-    public MyConnection() {
-        user = "root";
-        password = "";
-        port = "3306";
-        host = "localhost";
-        dbname = "javacafe";
-        url = "jdbc:mysql://" + host + ":" + port + "/" + dbname + "?useSSL=false&serverTimezone=UTC";
+    
+public MyConnection() {
+    Properties props = new Properties();
+
+    try (FileInputStream fis = new FileInputStream("db.properties")) {
+        props.load(fis);
+
+        this.url = props.getProperty("db.url");
+        this.user = props.getProperty("db.user");
+        this.password = props.getProperty("db.password");
+
+        if (url == null || user == null || password == null) {
+            throw new IllegalStateException(
+                "Thieu cau hinh trong db.properties"
+            );
+        }
+
+    } catch (IOException e) {
+        throw new IllegalStateException(
+            "Khong doc duoc db.properties. "
+            + "Hay dat file trong thu muc goc cua project.",
+            e
+        );
     }
+}
+
 
     public Connection getConnection() {
         try {
